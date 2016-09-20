@@ -1,6 +1,7 @@
 package kryo.application.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public class Supplier {
     private List<Address> addresses;
     private List<Contact> contacts;
     private List<Code> codes;
+    @JsonIgnore
+    private String ignoreField;
 
 // --------------------------- CONSTRUCTORS ---------------------------
 
@@ -104,6 +107,14 @@ public class Supplier {
         this.id = id;
     }
 
+    public String getIgnoreField() {
+        return ignoreField;
+    }
+
+    public void setIgnoreField(String ignoreField) {
+        this.ignoreField = ignoreField;
+    }
+
     public String getLink() {
         return link;
     }
@@ -160,6 +171,8 @@ public class Supplier {
         this.version = version;
     }
 
+// ------------------------ CANONICAL METHODS ------------------------
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
@@ -185,7 +198,6 @@ public class Supplier {
         if (addresses != null ? !addresses.equals(supplier.addresses) : supplier.addresses != null) return false;
         if (contacts != null ? !contacts.equals(supplier.contacts) : supplier.contacts != null) return false;
         return codes != null ? codes.equals(supplier.codes) : supplier.codes == null;
-
     }
 
     @Override

@@ -160,6 +160,8 @@ public class Supplier {
         this.version = version;
     }
 
+// ------------------------ CANONICAL METHODS ------------------------
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
@@ -185,7 +187,6 @@ public class Supplier {
         if (addresses != null ? !addresses.equals(supplier.addresses) : supplier.addresses != null) return false;
         if (contacts != null ? !contacts.equals(supplier.contacts) : supplier.contacts != null) return false;
         return codes != null ? codes.equals(supplier.codes) : supplier.codes == null;
-
     }
 
     @Override
